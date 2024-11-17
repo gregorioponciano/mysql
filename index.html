@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MySQL</title>
+
+    <style>
+        body {
+            margin: 10px;
+            padding: 0px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.753);
+        }
+
+        div {
+                    width: 80vw;
+                    padding: 10px;
+                    background-color: rgb(0, 0, 0);
+                    margin: auto;
+
+        }
+
+        h1 {
+                    text-align: center;
+                    margin: 10px;
+                    color: red;
+        }
+    </style>
+
+</head>
+<body>
+        <div>
+            <h1>Traduza a página para inglês</h1>
+            <p style="color: green;">-- Database para armazenar as informações das Tabelas</p>
+            <p>CREATE DATABASE IF NOT EXISTS cadastro</p>
+            <p>default character set utf8</p>
+            <p>default collate utf8_general_ci;</p><br>
+            
+            <p style="color: green;">-- Tabela para armazenar as informações dos usuários</p>
+            <p>CREATE TABLE IF NOT EXISTS usuarios (</p>
+            <p>id INT AUTO_INCREMENT PRIMARY KEY,</p>
+            <p>nome VARCHAR(100) NOT NULL,</p>
+            <p>email VARCHAR(100) NOT NULL UNIQUE,</p>
+            <p>senha VARCHAR(255) NOT NULL,</p>
+            <p>
+                data_users DATETIME DEFAULT CURRENT_TIMESTAMP
+                ) default charset = utf8;
+            </p><br>
+
+            <p>Formulários <a href="">PHP</a></p>
+        </div>
+   
+    
+</body>
+</html>
