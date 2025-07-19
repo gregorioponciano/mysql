@@ -1,0 +1,52 @@
+@charset "UTF-8";
+
+/body {
+    font-family: Arial, sans-serif;
+}
+
+/* Estilo básico do botão */
+button {
+    margin: 10px;
+    padding: 10px;
+    font-size: 16px;
+}
+
+/* Estilos do Modal */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 5px;
+    width: 300px;
+    text-align: center;
+}
+
+.close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Esconder o conteúdo do modal 2 por padrão */
+.modal-section {
+    display: none;
+}
+
+/* Mostrar o conteúdo quando ativado */
+.modal-section.active {
+    display: block;
+}
