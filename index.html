@@ -1,250 +1,396 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Roadmap MySQL</title>
-  <style>
-    /* ---------- RESET ---------- */
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roadmap MySQL</title>
+    <style>
+        /* ---------- RESET ---------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
 
-    body {
-      font-family: Arial, sans-serif;
-      display: flex;
-      min-height: 100vh;
-      line-height: 1.6;
-      background: #0e264b;
-      color: #1ae445;
-      scroll-behavior: smooth;
-    }
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            min-height: 100vh;
+            line-height: 1.6;
+            background: #0e264b;
+            color: #1ae445;
+            scroll-behavior: smooth;
+        }
 
-    h1, h2 {
-      margin-bottom: 15px;
-    }
+        h1, h2 {
+            margin-bottom: 15px;
+        }
 
-    pre {
-      background: #2c3e50;
-      color: #ecf0f1;
-      padding: 15px;
-      border-radius: 6px;
-      overflow-x: auto;
-    }
+        pre {
+            background: #2c3e50;
+            color: #ecf0f1;
+            padding: 15px;
+            border-radius: 6px;
+            overflow-x: auto;
+        }
 
-    /* ---------- SIDEBAR ---------- */
-    .sidebar {
-      width: 250px;
-      background-color: #2c3e50;
-      color: #fff;
-      padding-top: 20px;
-      position: fixed;
-      height: 100%;
-      overflow-y: auto;
-      transition: transform 0.3s ease;
-      z-index: 1000;
-    }
+        /* ---------- SIDEBAR ---------- */
+        .sidebar {
+            width: 250px;
+            background-color: #2c3e50;
+            color: #fff;
+            padding-top: 20px;
+            position: fixed;
+            height: 100%;
+            overflow-y: auto;
+            transition: transform 0.3s ease;
+            z-index: 1000;
+        }
 
-    .sidebar a {
-      display: block;
-      padding: 12px 20px;
-      text-decoration: none;
-      color: #ecf0f1;
-      transition: background 0.3s;
-    }
+        .sidebar a {
+            display: block;
+            padding: 12px 20px;
+            text-decoration: none;
+            color: #ecf0f1;
+            transition: background 0.3s;
+        }
 
-    .sidebar a:hover,
-    .sidebar a.active {
-      background-color: #34495e;
-    }
+        .sidebar a:hover,
+        .sidebar a.active {
+            background-color: #34495e;
+        }
 
-    /* ---------- CONTENT ---------- */
-    .content {
-      margin-ham: 250px;
-      padding: 30px;
-      flex: 1;
-      max-width: 1000px;
-    }
+        /* ---------- CONTENT ---------- */
+        .content {
+            margin-left: 250px;
+            padding: 30px;
+            flex: 1;
+            max-width: 1000px;
+        }
 
-    section {
-      margin-bottom: 60px;
-    }
+        section {
+            margin-bottom: 60px;
+        }
 
-    /* ---------- HAMBURGER ---------- */
-    .hamburger {
-      display: none;
-      position: fixed;
-      top: 0;
-      right: 5px;
-      z-index: 1100;
-      cursor: pointer;
-      font-size: 28px;
-      background: #2c3e50;
-      color: white;
-      border: none;
-      padding: 8px 12px;
-      border-radius: 6px;
-    }
+        /* ---------- HAMBURGER ---------- */
+        .hamburger {
+            display: none;
+            position: fixed;
+            top: 0;
+            right: 0;
+            z-index: 1100;
+            cursor: pointer;
+            font-size: 28px;
+            background: #2c3e50;
+            color: white;
+            border: none;
+            padding: 8px 12px;
+            border-radius: 6px;
+        }
 
-    /* ---------- RESPONSIVE ---------- */
-    @media (max-width: 768px) {
-      body {
-        flex-direction: column;
-      }
+        /* ---------- RESPONSIVE ---------- */
+        @media (max-width: 768px) {
+            body {
+                flex-direction: column;
+            }
 
-      .sidebar {
-        transform: translateX(-100%);
-        position: fixed;
-        top: 0;
-        ham: 0;
-        height: 100%;
-      }
+            .sidebar {
+                transform: translateX(-100%);
+                position: fixed;
+                top: 0;
+                left: 0;
+                height: 100%;
+                border: 1px solid white;
+            }
 
-      .sidebar.open {
-        transform: translateX(0);
-      }
+            .sidebar.open {
+                transform: translateX(0);
+            }
 
-      .content {
-        margin-ham: 0;
-        margin-top: 60px;
-        padding: 20px;
-      }
+            .content {
+                margin-left: 0;
+                margin-top: 60px;
+                padding: 20px;
+            }
 
-      .hamburger {
-        display: block;
-      }
-    }
+            .hamburger {
+                display: block;
+                border: 1px solid white;
+            }
+        }
 
-    /* ---------- SCROLLBAR ---------- */
-    ::-webkit-scrollbar {
-      width: 8px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: #34495e;
-      border-radius: 4px;
-    }
-  </style>
+        /* ---------- SCROLLBAR ---------- */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #34495e;
+            border-radius: 4px;
+        }
+    </style>
 </head>
 <body>
-  <!-- Botão Hamburguer -->
-  <button class="hamburger" onclick="toggleMenu()">☰</button>
 
-  <!-- Sidebar -->
-  <div class="sidebar" id="sidebar">
-    <a href="#intro" class="active">Introdução</a>
-    <a href="#database">Banco de Dados</a>
-    <a href="#tables">Tabelas</a>
-    <a href="#relations">Relacionamentos</a>
-    <a href="#workbench">MySQL Workbench</a>
-    <a href="#comandos">Comandos SQL</a>
-  </div>
+    <button class="hamburger" onclick="toggleMenu()">☰</button>
 
-  <!-- Conteúdo -->
-  <div class="content">
-    <section id="intro">
-      <h1>Roadmap MySQL</h1>
-      <p>
-        Este site é um guia para aprender **MySQL** e o uso do **MySQL Workbench**.  
-        Ele cobre desde os conceitos básicos até relacionamentos e comandos importantes.
-      </p>
-    </section>
+    <div class="sidebar" id="sidebar">
+        <a href="#intro" class="active">Introdução</a>
+        <a href="#database">Banco de Dados</a>
+        <a href="#tables">Tabelas</a>
+        <a href="#relations">Relacionamentos</a>
+        <a href="#workbench">MySQL Workbench</a>
+        <a href="#comandos">Comandos SQL</a>
+        <a href="#schema">Esquema Completo</a>
+        <a href="#inserts">Inserção de Dados</a>
+        <a href="#queries">Consultas Avançadas</a>
+    </div>
 
-    <section id="database">
-      <h2>Banco de Dados</h2>
-      <p>Um banco de dados é um contêiner que armazena tabelas e outros objetos.</p>
-      <pre><code>CREATE DATABASE loja;
+    <div class="content">
+        <section id="intro">
+            <h1>Roadmap MySQL</h1>
+            <p>
+                Este site é um guia para aprender **MySQL** e o uso do **MySQL Workbench**.
+                Ele cobre desde os conceitos básicos até relacionamentos e comandos importantes.
+            </p>
+        </section>
+
+        <section id="database">
+            <h2>Banco de Dados</h2>
+            <p>Um banco de dados é um contêiner que armazena tabelas e outros objetos.</p>
+            <pre><code>CREATE DATABASE loja;
 USE loja;</code></pre>
-    </section>
+        </section>
 
-    <section id="tables">
-      <h2>Tabelas</h2>
-      <p>Tabelas armazenam dados em linhas e colunas. Exemplo:</p>
-      <pre><code>CREATE TABLE clientes (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  nome VARCHAR(100),
-  email VARCHAR(100),
-  telefone VARCHAR(15)
+        <section id="tables">
+            <h2>Tabelas</h2>
+            <p>Tabelas armazenam dados em linhas e colunas. Exemplo:</p>
+            <pre><code>CREATE TABLE clientes (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    telefone VARCHAR(15)
 );</code></pre>
-    </section>
+        </section>
 
-    <section id="relations">
-      <h2>Relacionamentos</h2>
-      <p>Relacionamentos ligam tabelas entre si usando **chaves estrangeiras**.</p>
-      <pre><code>CREATE TABLE pedidos (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  cliente_id INT,
-  data DATE,
-  FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+        <section id="relations">
+            <h2>Relacionamentos</h2>
+            <p>Relacionamentos ligam tabelas entre si usando **chaves estrangeiras**.</p>
+            <pre><code>CREATE TABLE pedidos (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    cliente_id INT,
+    data DATE,
+    FOREIGN KEY (cliente_id) REFERENCES clientes(id)
 );</code></pre>
-    </section>
+        </section>
 
-    <section id="workbench">
-      <h2>MySQL Workbench</h2>
-      <p>
-        O Workbench é a ferramenta oficial da Oracle para administrar o MySQL.  
-        Com ele é possível:
-      </p>
-      <ul>
-        <li>Criar e modelar bancos de dados (modelagem ER)</li>
-        <li>Executar consultas SQL</li>
-        <li>Gerenciar usuários e permissões</li>
-        <li>Exportar e importar dados</li>
-      </ul>
-    </section>
+        <section id="workbench">
+            <h2>MySQL Workbench</h2>
+            <p>
+                O Workbench é a ferramenta oficial da Oracle para administrar o MySQL.
+                Com ele é possível:
+            </p>
+            <ul>
+                <li>Criar e modelar bancos de dados (modelagem ER)</li>
+                <li>Executar consultas SQL</li>
+                <li>Gerenciar usuários e permissões</li>
+                <li>Exportar e importar dados</li>
+            </ul>
+        </section>
 
-    <section id="comandos">
-      <h2>Principais Comandos SQL</h2>
-      <h3>Inserir dados</h3>
-      <pre><code>INSERT INTO clientes (nome, email, telefone)
+        <section id="comandos">
+            <h2>Principais Comandos SQL</h2>
+            <h3>Inserir dados</h3>
+            <pre><code>INSERT INTO clientes (nome, email, telefone)
 VALUES ('João Silva', 'joao@email.com', '11999999999');</code></pre>
 
-      <h3>Consultar dados</h3>
-      <pre><code>SELECT * FROM clientes;
+            <h3>Consultar dados</h3>
+            <pre><code>SELECT * FROM clientes;
 SELECT nome, email FROM clientes WHERE id = 1;</code></pre>
 
-      <h3>Atualizar dados</h3>
-      <pre><code>UPDATE clientes SET email = 'novo@email.com'
+            <h3>Atualizar dados</h3>
+            <pre><code>UPDATE clientes SET email = 'novo@email.com'
 WHERE id = 1;</code></pre>
 
-      <h3>Excluir dados</h3>
-      <pre><code>DELETE FROM clientes WHERE id = 1;</code></pre>
-    </section>
-  </div>
+            <h3>Excluir dados</h3>
+            <pre><code>DELETE FROM clientes WHERE id = 1;</code></pre>
+        </section>
+        
+        <section id="schema">
+            <h2>Esquema de Banco de Dados Completo</h2>
+            <p>
+                Para um sistema de e-commerce, precisamos de um esquema que ligue **produtos**, **clientes** e **pedidos**.
+                A seguir, o código para criar todas as tabelas e suas relações.
+            </p>
+            <pre><code>
+-- Use o banco de dados 'loja' criado anteriormente
+USE loja;
 
-  <script>
-    // Abrir/Fechar menu no mobile
-    function toggleMenu() {
-      document.getElementById('sidebar').classList.toggle('open');
-    }
+-- 1. Tabela de Categorias
+-- Organiza os produtos em grupos.
+CREATE TABLE categorias (
+    id_categoria INT PRIMARY KEY AUTO_INCREMENT,
+    nome_categoria VARCHAR(50) NOT NULL
+);
 
-    // Destacar link ativo
-    const links = document.querySelectorAll('.sidebar a');
-    links.forEach(link => {
-      link.addEventListener('click', () => {
-        links.forEach(l => l.classList.remove('active'));
-        link.classList.add('active');
-        if (window.innerWidth <= 768) {
-          document.getElementById('sidebar').classList.remove('open');
+-- 2. Tabela de Produtos
+-- Detalhes de cada produto. O id_categoria é a chave estrangeira.
+CREATE TABLE produtos (
+    id_produto INT PRIMARY KEY AUTO_INCREMENT,
+    nome_produto VARCHAR(100) NOT NULL,
+    descricao TEXT,
+    preco DECIMAL(10, 2) NOT NULL,
+    estoque INT NOT NULL DEFAULT 0,
+    id_categoria INT,
+    FOREIGN KEY (id_categoria) REFERENCES categorias(id_categoria)
+);
+
+-- 3. Tabela de Clientes
+-- Informações dos clientes.
+CREATE TABLE clientes (
+    id_cliente INT PRIMARY KEY AUTO_INCREMENT,
+    nome_cliente VARCHAR(100) NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    endereco VARCHAR(255)
+);
+
+-- 4. Tabela de Pedidos
+-- Registra cada compra. O id_cliente é a chave estrangeira.
+CREATE TABLE pedidos (
+    id_pedido INT PRIMARY KEY AUTO_INCREMENT,
+    id_cliente INT,
+    data_pedido DATETIME NOT NULL,
+    status VARCHAR(50) DEFAULT 'Em Processamento',
+    FOREIGN KEY (id_cliente) REFERENCES clientes(id_cliente)
+);
+
+-- 5. Tabela de Itens do Pedido
+-- Tabela que conecta 'pedidos' e 'produtos'.
+-- Ela registra quais produtos estão em cada pedido.
+CREATE TABLE itens_pedido (
+    id_item INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT,
+    id_produto INT,
+    quantidade INT NOT NULL,
+    preco_unitario DECIMAL(10, 2) NOT NULL,
+    FOREIGN KEY (id_pedido) REFERENCES pedidos(id_pedido),
+    FOREIGN KEY (id_produto) REFERENCES produtos(id_produto)
+);
+            </code></pre>
+        </section>
+
+        <section id="inserts">
+            <h2>Inserção de Dados</h2>
+            <p>
+                Para testar as tabelas, vamos inserir alguns dados de exemplo.
+                A ordem da inserção é importante: primeiro as tabelas sem chaves estrangeiras, depois as que dependem delas.
+            </p>
+            <pre><code>
+-- Inserir dados nas tabelas 'categorias' e 'clientes'
+INSERT INTO categorias (nome_categoria) VALUES ('Eletrônicos'), ('Livros');
+INSERT INTO clientes (nome_cliente, email, endereco) VALUES
+('João Silva', 'joao.silva@email.com', 'Rua A, 123'),
+('Maria Souza', 'maria.souza@email.com', 'Avenida B, 456');
+
+-- Inserir dados na tabela 'produtos' (depende de 'categorias')
+-- Note que usamos os IDs das categorias que acabamos de inserir.
+INSERT INTO produtos (nome_produto, descricao, preco, estoque, id_categoria) VALUES
+('Smartphone X', 'Smartphone de última geração', 1500.00, 50, 1),
+('Notebook Y', 'Notebook para trabalho', 2500.00, 20, 1),
+('O Senhor dos Anéis', 'Livro de fantasia épica', 50.00, 100, 2);
+
+-- Inserir dados na tabela 'pedidos' (depende de 'clientes')
+INSERT INTO pedidos (id_cliente, data_pedido, status) VALUES
+(1, NOW(), 'Em Processamento'),
+(2, NOW(), 'Aguardando Pagamento');
+
+-- Inserir dados na tabela 'itens_pedido' (depende de 'pedidos' e 'produtos')
+-- Este pedido é do João (id_cliente = 1) e inclui 1 Smartphone e 2 livros.
+INSERT INTO itens_pedido (id_pedido, id_produto, quantidade, preco_unitario) VALUES
+(1, 1, 1, 1500.00),
+(1, 3, 2, 50.00);
+            </code></pre>
+        </section>
+
+        <section id="queries">
+            <h2>Consultas Avançadas (JOIN)</h2>
+            <p>
+                Usando o comando **JOIN**, podemos combinar dados de várias tabelas
+                para obter informações mais completas.
+            </p>
+            <pre><code>
+-- Consultar todos os pedidos e os dados dos clientes que os fizeram
+SELECT 
+    p.id_pedido,
+    p.data_pedido,
+    p.status,
+    c.nome_cliente,
+    c.email
+FROM pedidos AS p
+INNER JOIN clientes AS c ON p.id_cliente = c.id_cliente;
+
+-- Consultar os detalhes de um pedido específico (ID = 1),
+-- incluindo o nome do cliente, o nome do produto e a quantidade.
+SELECT 
+    p.id_pedido,
+    c.nome_cliente,
+    prod.nome_produto,
+    ip.quantidade,
+    ip.preco_unitario,
+    (ip.quantidade * ip.preco_unitario) AS subtotal
+FROM itens_pedido AS ip
+INNER JOIN pedidos AS p ON ip.id_pedido = p.id_pedido
+INNER JOIN clientes AS c ON p.id_cliente = c.id_cliente
+INNER JOIN produtos AS prod ON ip.id_produto = prod.id_produto
+WHERE p.id_pedido = 1;
+            </code></pre>
+        </section>
+    </div>
+
+    <script>
+        // Abrir/Fechar menu no mobile
+        function toggleMenu() {
+            document.getElementById('sidebar').classList.toggle('open');
         }
-      });
-    });
 
-    // Rolagem suave + destacar seção visível
-    window.addEventListener('scroll', () => {
-      let fromTop = window.scrollY + 70;
-      links.forEach(link => {
-        let section = document.querySelector(link.getAttribute('href'));
-        if (
-          section.offsetTop <= fromTop &&
-          section.offsetTop + section.offsetHeight > fromTop
-        ) {
-          links.forEach(l => l.classList.remove('active'));
-          link.classList.add('active');
+        // Fechar menu quando a tela for redimensionada para um tamanho maior
+        function handleResize() {
+            const sidebar = document.getElementById('sidebar');
+            if (window.innerWidth > 768 && sidebar.classList.contains('open')) {
+                sidebar.classList.remove('open');
+            }
         }
-      });
-    });
-  </script>
+
+        // Adicionar listener para redimensionamento da janela
+        window.addEventListener('resize', handleResize);
+
+        // Destacar link ativo
+        const links = document.querySelectorAll('.sidebar a');
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                links.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+                if (window.innerWidth <= 768) {
+                    document.getElementById('sidebar').classList.remove('open');
+                }
+            });
+        });
+
+        // Rolagem suave + destacar seção visível
+        window.addEventListener('scroll', () => {
+            let fromTop = window.scrollY + 70;
+            links.forEach(link => {
+                let section = document.querySelector(link.getAttribute('href'));
+                if (section) {
+                    if (
+                        section.offsetTop <= fromTop &&
+                        section.offsetTop + section.offsetHeight > fromTop
+                    ) {
+                        links.forEach(l => l.classList.remove('active'));
+                        link.classList.add('active');
+                    }
+                }
+            });
+        });
+    </script>
 </body>
 </html>
