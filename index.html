@@ -1,56 +1,250 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MySQL</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Roadmap MySQL</title>
+  <style>
+    /* ---------- RESET ---------- */
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-    <style>
-        body {
-            margin: 10px;
-            padding: 0px;
-            color: white;
-            background-color: rgba(0, 0, 0, 0.753);
-        }
+    body {
+      font-family: Arial, sans-serif;
+      display: flex;
+      min-height: 100vh;
+      line-height: 1.6;
+      background: #0e264b;
+      color: #1ae445;
+      scroll-behavior: smooth;
+    }
 
-        div {
-                    width: 80vw;
-                    padding: 10px;
-                    background-color: rgb(0, 0, 0);
-                    margin: auto;
+    h1, h2 {
+      margin-bottom: 15px;
+    }
 
-        }
+    pre {
+      background: #2c3e50;
+      color: #ecf0f1;
+      padding: 15px;
+      border-radius: 6px;
+      overflow-x: auto;
+    }
 
-        h1 {
-                    text-align: center;
-                    margin: 10px;
-                    color: red;
-        }
-    </style>
+    /* ---------- SIDEBAR ---------- */
+    .sidebar {
+      width: 250px;
+      background-color: #2c3e50;
+      color: #fff;
+      padding-top: 20px;
+      position: fixed;
+      height: 100%;
+      overflow-y: auto;
+      transition: transform 0.3s ease;
+      z-index: 1000;
+    }
 
+    .sidebar a {
+      display: block;
+      padding: 12px 20px;
+      text-decoration: none;
+      color: #ecf0f1;
+      transition: background 0.3s;
+    }
+
+    .sidebar a:hover,
+    .sidebar a.active {
+      background-color: #34495e;
+    }
+
+    /* ---------- CONTENT ---------- */
+    .content {
+      margin-ham: 250px;
+      padding: 30px;
+      flex: 1;
+      max-width: 1000px;
+    }
+
+    section {
+      margin-bottom: 60px;
+    }
+
+    /* ---------- HAMBURGER ---------- */
+    .hamburger {
+      display: none;
+      position: fixed;
+      top: 0;
+      right: 5px;
+      z-index: 1100;
+      cursor: pointer;
+      font-size: 28px;
+      background: #2c3e50;
+      color: white;
+      border: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+    }
+
+    /* ---------- RESPONSIVE ---------- */
+    @media (max-width: 768px) {
+      body {
+        flex-direction: column;
+      }
+
+      .sidebar {
+        transform: translateX(-100%);
+        position: fixed;
+        top: 0;
+        ham: 0;
+        height: 100%;
+      }
+
+      .sidebar.open {
+        transform: translateX(0);
+      }
+
+      .content {
+        margin-ham: 0;
+        margin-top: 60px;
+        padding: 20px;
+      }
+
+      .hamburger {
+        display: block;
+      }
+    }
+
+    /* ---------- SCROLLBAR ---------- */
+    ::-webkit-scrollbar {
+      width: 8px;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #34495e;
+      border-radius: 4px;
+    }
+  </style>
 </head>
 <body>
-        <div>
-            <h1>Traduza a página para inglês</h1>
-            <p style="color: green;">-- Database para armazenar as informações das Tabelas</p>
-            <p>CREATE DATABASE IF NOT EXISTS cadastro</p>
-            <p>default character set utf8</p>
-            <p>default collate utf8_general_ci;</p><br>
-            
-            <p style="color: green;">-- Tabela para armazenar as informações dos usuários</p>
-            <p>CREATE TABLE IF NOT EXISTS usuarios (</p>
-            <p>id INT AUTO_INCREMENT PRIMARY KEY,</p>
-            <p>nome VARCHAR(100) NOT NULL,</p>
-            <p>email VARCHAR(100) NOT NULL UNIQUE,</p>
-            <p>senha VARCHAR(255) NOT NULL,</p>
-            <p>
-                data_users DATETIME DEFAULT CURRENT_TIMESTAMP
-                ) default charset = utf8;
-            </p><br>
+  <!-- Botão Hamburguer -->
+  <button class="hamburger" onclick="toggleMenu()">☰</button>
 
-            <p>Formulários <a href="https://gregorioponciano.github.io/php/index.html">PHP</a></p>
-        </div>
-   
-    
+  <!-- Sidebar -->
+  <div class="sidebar" id="sidebar">
+    <a href="#intro" class="active">Introdução</a>
+    <a href="#database">Banco de Dados</a>
+    <a href="#tables">Tabelas</a>
+    <a href="#relations">Relacionamentos</a>
+    <a href="#workbench">MySQL Workbench</a>
+    <a href="#comandos">Comandos SQL</a>
+  </div>
+
+  <!-- Conteúdo -->
+  <div class="content">
+    <section id="intro">
+      <h1>Roadmap MySQL</h1>
+      <p>
+        Este site é um guia para aprender **MySQL** e o uso do **MySQL Workbench**.  
+        Ele cobre desde os conceitos básicos até relacionamentos e comandos importantes.
+      </p>
+    </section>
+
+    <section id="database">
+      <h2>Banco de Dados</h2>
+      <p>Um banco de dados é um contêiner que armazena tabelas e outros objetos.</p>
+      <pre><code>CREATE DATABASE loja;
+USE loja;</code></pre>
+    </section>
+
+    <section id="tables">
+      <h2>Tabelas</h2>
+      <p>Tabelas armazenam dados em linhas e colunas. Exemplo:</p>
+      <pre><code>CREATE TABLE clientes (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  nome VARCHAR(100),
+  email VARCHAR(100),
+  telefone VARCHAR(15)
+);</code></pre>
+    </section>
+
+    <section id="relations">
+      <h2>Relacionamentos</h2>
+      <p>Relacionamentos ligam tabelas entre si usando **chaves estrangeiras**.</p>
+      <pre><code>CREATE TABLE pedidos (
+  id INT AUTO_INCREMENT PRIMARY KEY,
+  cliente_id INT,
+  data DATE,
+  FOREIGN KEY (cliente_id) REFERENCES clientes(id)
+);</code></pre>
+    </section>
+
+    <section id="workbench">
+      <h2>MySQL Workbench</h2>
+      <p>
+        O Workbench é a ferramenta oficial da Oracle para administrar o MySQL.  
+        Com ele é possível:
+      </p>
+      <ul>
+        <li>Criar e modelar bancos de dados (modelagem ER)</li>
+        <li>Executar consultas SQL</li>
+        <li>Gerenciar usuários e permissões</li>
+        <li>Exportar e importar dados</li>
+      </ul>
+    </section>
+
+    <section id="comandos">
+      <h2>Principais Comandos SQL</h2>
+      <h3>Inserir dados</h3>
+      <pre><code>INSERT INTO clientes (nome, email, telefone)
+VALUES ('João Silva', 'joao@email.com', '11999999999');</code></pre>
+
+      <h3>Consultar dados</h3>
+      <pre><code>SELECT * FROM clientes;
+SELECT nome, email FROM clientes WHERE id = 1;</code></pre>
+
+      <h3>Atualizar dados</h3>
+      <pre><code>UPDATE clientes SET email = 'novo@email.com'
+WHERE id = 1;</code></pre>
+
+      <h3>Excluir dados</h3>
+      <pre><code>DELETE FROM clientes WHERE id = 1;</code></pre>
+    </section>
+  </div>
+
+  <script>
+    // Abrir/Fechar menu no mobile
+    function toggleMenu() {
+      document.getElementById('sidebar').classList.toggle('open');
+    }
+
+    // Destacar link ativo
+    const links = document.querySelectorAll('.sidebar a');
+    links.forEach(link => {
+      link.addEventListener('click', () => {
+        links.forEach(l => l.classList.remove('active'));
+        link.classList.add('active');
+        if (window.innerWidth <= 768) {
+          document.getElementById('sidebar').classList.remove('open');
+        }
+      });
+    });
+
+    // Rolagem suave + destacar seção visível
+    window.addEventListener('scroll', () => {
+      let fromTop = window.scrollY + 70;
+      links.forEach(link => {
+        let section = document.querySelector(link.getAttribute('href'));
+        if (
+          section.offsetTop <= fromTop &&
+          section.offsetTop + section.offsetHeight > fromTop
+        ) {
+          links.forEach(l => l.classList.remove('active'));
+          link.classList.add('active');
+        }
+      });
+    });
+  </script>
 </body>
 </html>
