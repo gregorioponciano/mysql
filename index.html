@@ -157,8 +157,8 @@
         <section id="database">
             <h2>Banco de Dados</h2>
             <p>Um banco de dados é um contêiner que armazena tabelas e outros objetos.</p>
-            <pre><code>CREATE DATABASE loja;
-USE loja;</code></pre>
+            <pre><code>CREATE DATABASE IF NOT EXISTS `loja` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+USE `loja`;</code></pre>
         </section>
 
         <section id="tables">
