@@ -61,8 +61,3 @@ Este repositório foi criado para documentar e organizar meus estudos sobre cont
 ## 🛠️ Configurações Iniciais
 Antes de começar, é necessário configurar sua identidade:
 
-```bash
-git config --global user.name "Seu Nome"
-git config --global user.email "seuemail@exemplo.com"
-
-git clone [https://github.com/gregorioponciano/mysql.git](https://github.com/gregorioponciano/mysql.git)
