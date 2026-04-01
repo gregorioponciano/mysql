@@ -45,3 +45,24 @@ FROM clientes c
 INNER JOIN pedidos p ON c.id = p.cliente_id
 WHERE p.valor_total > 100
 ORDER BY p.valor_total DESC;
+
+# Estudo de Git & GitHub 🚀
+
+Este repositório foi criado para documentar e organizar meus estudos sobre controle de versão com **Git** e hospedagem de código no **GitHub**. Aqui você encontrará os principais comandos, fluxos de trabalho e boas práticas que estou aprendendo.
+
+## 📌 Conteúdo
+- [Configurações Iniciais](#-configurações-iniciais)
+- [Principais Comandos Git](#-principais-comandos-git)
+- [Trabalhando com Repositórios Remotos](#-trabalhando-com-repositórios-remotos)
+- [Fluxo de Branching](#-fluxo-de-branching)
+
+---
+
+## 🛠️ Configurações Iniciais
+Antes de começar, é necessário configurar sua identidade:
+
+```bash
+git config --global user.name "Seu Nome"
+git config --global user.email "seuemail@exemplo.com"
+
+git clone [https://github.com/gregorioponciano/mysql.git](https://github.com/gregorioponciano/mysql.git)
