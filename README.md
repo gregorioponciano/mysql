@@ -56,7 +56,7 @@ Este repositório foi criado para documentar e organizar meus estudos sobre cont
 - [Trabalhando com Repositórios Remotos](#-trabalhando-com-repositórios-remotos)
 - [Fluxo de Branching](#-fluxo-de-branching)
 
----
+---`_
 
 ## 🛠️ Configurações Iniciais
 Antes de começar, é necessário configurar sua identidade:
